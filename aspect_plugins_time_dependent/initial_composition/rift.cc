@@ -19,12 +19,13 @@
  */
 
 
-#include "initial_composition/rift.h"
+#include "rift.h"
 #include <aspect/postprocess/interface.h>
 #include <aspect/geometry_model/box.h>
 #include <aspect/geometry_model/chunk.h>
 #include "../material_model/visco_plastic_strain.h"
 #include <aspect/utilities.h>
+#include "compat.h"
 
 namespace aspect
 {
