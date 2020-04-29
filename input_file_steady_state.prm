@@ -32,7 +32,7 @@ subsection Geometry model
   subsection Initial topography model
     set Model name                             = ascii data
 	subsection Ascii data model
-      set Data directory                       =/input_steady_state/
+      set Data directory                       = input_steady_state/
       set Data file name                       = box_2d_%s.0.txt
       set Scale factor                         = 1
     end
@@ -57,7 +57,7 @@ subsection Initial temperature model
   set List of model names                      = litho1
   set List of model operators                  = add
   subsection Ascii data model
-    set Data directory                         =/input_steady_state/
+    set Data directory                         = input_steady_state/
     set Data file name                         = box_2d_Moho_LAB.%s.txt
   end
   subsection Litho1.0
@@ -89,7 +89,7 @@ end
 subsection Initial composition model
   set List of model names                      = litho1
   subsection Ascii data model
-    set Data directory                         =/input_steady_state/
+    set Data directory                         = input_steady_state/
     set Data file name                         = box_2d_Moho_LAB.%s.txt
   end
   subsection LITHO1.0
