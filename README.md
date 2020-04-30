@@ -7,17 +7,17 @@ This repository belongs to the paper
     by
     E. L Heckenbach, S. Brune, A. C. Glerum and J. Bott.
 
-and contains an input file and code to reproduce the computations in the paper.
+and contains input files and code to reproduce the computations in the paper.
 
 Contents
 --------
 ``aspect_plugins_time_dependent/``
 
-The ASPECT plugins created specifically for the time-dependent models of this paper. They should be build as shared libraries in conjunction with ASPECT 2.0.0-pre commit 585d1c3c99de259057408ea90aab5dbe963ecb40, see the supplied installation instructions. A full ASPECT branch including these plugins is available at ``https://github.com/anne-glerum/aspect/tree/paper-Heckenbach-Limit-steady-state-assumption``.
+The ASPECT plugins created specifically for the time-dependent models of this paper. They should be build as shared libraries in conjunction with ASPECT 2.0.0-pre commit 585d1c3c99de259057408ea90aab5dbe963ecb40, see the supplied installation instructions. A full ASPECT branch including these plugins is available at ``https://github.com/anne-glerum/aspect/tree/paper-Heckenbach-Limit-steady-state-assumption``. Note that more recent versions of the plugins are available from ``https://github.com/anne-glerum/aspect/tree/initial_composition_rift`` and ``https://github.com/anne-glerum/aspect/tree/polyline_rift``.
 
 ``aspect_plugins_steady_state/``
 
-The ASPECT plugins created specifically for the steady-state models of this paper. They should be build as shared libraries in conjunction with ASPECT 2.0.0-pre commit 791f903229e4cdc65c04710fd0d9211a7250948d, see the supplied installation instructions. A full ASPECT branch including these plugins is available at ``https://github.com/anne-glerum/aspect/tree/paper-Heckenbach-Limit-steady-state-assumption-2``.
+The ASPECT plugins created specifically for the steady-state models of this paper. They should be build as shared libraries in conjunction with ASPECT 2.0.0-pre commit 791f903229e4cdc65c04710fd0d9211a7250948d, see the supplied installation instructions. A full ASPECT branch including these plugins is available at ``https://github.com/anne-glerum/aspect/tree/paper-Heckenbach-Limit-steady-state-assumption-2``. Note that more recent versions of the plugins are available from ``https://github.com/anne-glerum/aspect/tree/litho1_geotherm``.
 
 ``input_file_time_dependent.prm``
 
