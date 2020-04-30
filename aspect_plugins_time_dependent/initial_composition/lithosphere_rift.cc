@@ -35,7 +35,7 @@ namespace aspect
     LithosphereRift<dim>::
     initialize ()
     {
-      // Check that the required initial composition model is used
+      // Check that the required initial temperature model is used
       const std::vector<std::string> active_initial_temperature_models = this->get_initial_temperature_manager().get_active_initial_temperature_names();
       AssertThrow(find(active_initial_temperature_models.begin(),active_initial_temperature_models.end(), "lithosphere with rift") != active_initial_temperature_models.end(),
                   ExcMessage("The lithosphere with rift initial composition plugin requires the lithosphere with rift initial temperature plugin."));
@@ -232,7 +232,7 @@ namespace aspect
           for (unsigned int i_segment = 0; i_segment < n_temp_segments; i_segment++)
             {
               // In 3d a line segment consists of 2 points,
-              // in 2d only 1 (ridge axis orthogonal two x and y)
+              // in 2d only 1 (ridge axis orthogonal to x and y)
               point_list[i_segment].resize(dim-1);
 
 
@@ -283,9 +283,6 @@ namespace aspect
                                                                 "the longitude and latitude, separated by a ','."));
 
                   // Add the point to the list of points for this segment
-                  //if (dynamic_cast<const GeometryModel::Box<dim> *>(&this->get_geometry_model()) == NULL)
-                  //   polygon_point_list[i_points] = (Point<2>(temp_point[0]/180.*numbers::PI, 0.5*numbers::PI-temp_point[1]/180.*numbers::PI));
-                  //else
                   polygon_point_list[i_points] = (Point<2>(temp_point[0], temp_point[1]));
                 }
             }
@@ -314,13 +311,10 @@ namespace aspect
   {
     ASPECT_REGISTER_INITIAL_COMPOSITION_MODEL(LithosphereRift,
                                               "lithosphere with rift",
-                                              "A class that implements initial conditions for the porosity field "
-                                              "by computing the equilibrium melt fraction for the given initial "
-                                              "condition and reference pressure profile. Note that this plugin only "
-                                              "works if there is a compositional field called `porosity', and the "
-                                              "used material model implements the 'MeltFractionModel' interface. "
-                                              "For all compositional fields except porosity this plugin returns 0.0, "
-                                              "and they are therefore not changed as long as the default `add' "
-                                              "operator is selected for this plugin.")
+                                              "A class that implements initial conditions for the lithosphere compositions "
+                                              "including an upper crust, lower crust and mantle lithosphere. "
+                                              "An Gaussian perturbation to the otherwise laterally homogeneous layers "
+                                              "can be specified. Note that the corresponding temperature plugin should "
+                                              "be used.")
   }
 }

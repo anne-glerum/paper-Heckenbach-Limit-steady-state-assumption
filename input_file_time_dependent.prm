@@ -90,10 +90,10 @@ subsection Initial composition model
     # These factors define how much thinner the inherited domain thicknesses are than the undisturbed layer thicknesses (order: upper, lower, mantle litho)
     # example: 0.25 inherited domain will be 25% thinner that the undisturbed domain
     set Amplitude of Gaussian rift geometry   = 0, 0, 0.057471264 
-    # Syntax: LineSegmentA; LineSegmentB
-    # Syntax: while LineSegment is point1_x,point1_y>point2_x,point2_y
-    # in 2D: only points in x
-    set Rift axis line segments               = 245e3>255e3
+    # Syntax 2D & 3D: LineSegmentA; LineSegmentB
+    # Syntax 3D: while LineSegment is point1_x,point1_y>point2_x,point2_y
+    # Syntax 2D: while LineSegment is point1_x,point1_y
+    set Rift axis line segments               = 245e3,0
     # Reference thicknesses
     set Layer thicknesses                     = 20e3, 10e3, 90e3 
   end
@@ -105,8 +105,7 @@ subsection Initial composition model
     # Max noise depth (should go down at least to the BDT)
     set Depth around which Gaussian noise is smoothed out           = 50e3
     # The rift polygon specified in cartesian surface coordinates (x and y)
-    # in 2D: only points in x
-    set Rift axis line segments                                     = 245e3>255e3
+    set Rift axis line segments                                     = 245e3,0
     # The resolution of the table that holds the noise values
     # Bilinear interpolation between these values is performed when necessary
     set Grid intervals for noise X                                  = 500

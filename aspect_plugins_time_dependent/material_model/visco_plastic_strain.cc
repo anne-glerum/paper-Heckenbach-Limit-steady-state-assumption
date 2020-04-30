@@ -401,25 +401,9 @@ namespace aspect
     evaluate(const MaterialModel::MaterialModelInputs<dim> &in,
              MaterialModel::MaterialModelOutputs<dim> &out) const
     {
-      // Compute a length scale based on cell size to be used in strain weakening.
-      // Unfortunately, AdditionalNamedOutputs does not have access to cell.
-      // (One can abstract a cell_iterator (not active_cell_iterator!), but this requires
-      // changing the material model interface.)
-      // However, since Outputs is calculated on the cell vertices, we can do:
-      const double length_scale = 1;// in.cell
-/*                                  ?
-                                  1./((*in.cell)->minimum_vertex_distance()/reference_length_strain)
-                                  :
-                                  // The first time around for the calculation of the initial adiabatic profile
-                                  // there is only 1 point in Inputs
-                                  // To prevent an infinite length scale (even though it's not used),
-                                  // we set it to 1 in this case.
-                                  (in.strain_rate.size() == 0
-                                      ?
-                                      1.
-                                      :
-                                      1./((in.position[in.position.size()-1][0] - in.position[0][0])/reference_length_strain));
-*/
+      // Ignore length_scale
+      const double length_scale = 1;
+
       // Loop through points
       for (unsigned int i=0; i < in.temperature.size(); ++i)
         {

@@ -145,9 +145,7 @@ namespace aspect
                  Utilities::AsciiDataBoundary<dim>::get_data_component(left_boundary_id,
                                                                        tmp_position,
                                                                        0));
-      // Get pointer to initial topography model to compute the layer thicknesses
-      //InitialTopographyModel::Interface<dim> *topo_model = const_cast<InitialTopographyModel::Interface<dim>*>(&this->get_initial_topography_model());
-      //const double topo = topo_model->value(surface_position);
+
       const double topo = this->get_initial_topography_model().value(surface_position);
       const double topo_radius = reference_radius + ((this->get_pre_refinement_step()==this->get_parameters().initial_adaptive_refinement) ? topo : 0);
       if (this->get_pre_refinement_step()==this->get_parameters().initial_adaptive_refinement)
@@ -166,15 +164,13 @@ namespace aspect
 
       // In the lithosphere, return a continental geotherm
       // that incorporates radioactive heating.
-      //AssertThrow(topo_radius>=radius, ExcMessage("The current point has a larger radius than the domain"));
       const double depth = std::max(0.,topo_radius-radius);
 
       if (radius >= LAB_radius)
         {
-          //return continental_geotherm(depth, thicknesses);
+          // return continental_geotherm(depth, thicknesses);
           // deal with small roundoff errors etc first
           const double tmpT = continental_geotherm(depth, thicknesses);
-          //AssertThrow(tmpT >= T0, ExcMessage("continental T is too small " + std::to_string(tmpT) + " at depth " + std::to_string(depth) + " and height " + std::to_string(radius) + " for layer thicknesses " + std::to_string(thicknesses[0]) + ", " + std::to_string(thicknesses[1]) + ", " + std::to_string(thicknesses[2]) + " at x-coord " + std::to_string(position[0])));
           if (tmpT < T0)
             {
               if (tmpT<T0-5.)
@@ -190,6 +186,7 @@ namespace aspect
           AssertThrow(tmpT < LAB_isotherm+50, ExcMessage("continental T is too big" + std::to_string(tmpT)));
           return tmpT;
         }
+
       // Up to a compensation depth, return the LAB temperature
       // This ensures there are no lateral temperature gradients
       // in the mantle
